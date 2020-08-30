@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+<title>Прокат Xbox One, Игр и Геймпадов в Минсе | X-game.by</title>
+</head>
+<body>
+
+
+
+
+
+
+<div class="message-ok">
+<?php
+$check = '';
+if (!empty($_POST["check"]) && is_array($_POST["check"]))
+{
+    $check = implode(" ", $_POST["check"]);
+}
+$from = "postmaster@x-game.by";
+$recipient = "gamepad.x.play@gmail.com";
+$subject = "Заказ x-game.by";
+$message = "<html>\n<body>\n\n<b>".$_POST["name"]."</b> с номером телефона - <b>".$_POST["nomber"]."</b>\n<p>
+Выбрал вариант получения - <b>".$_POST["dostavka"]."</b>\n<p>
+Хочет заказать: <b>".$check."</b>\n<p>
+Оставил комментарий - <b>".$_POST["komment"]."</b>\n</body>\n;<p></html>";
+
+
+$headers = 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/html; charset=utf-8' . "\r\n" . 'From: ' . $from;
+$verify = mail($recipient, $subject, $message, $headers);
+
+if ($verify == true)
+{
+echo "<p>Сообщение отправлено</p>";
+}
+else
+{
+echo "<p>Сообщение не отправлено</p>";
+}
+?>
+	<div class="message-text"> Спасибо, что выбрали X-GAME.BY </div>
+	<div class="message-home"><a href="http://x-game.by/"> Вернуться на главную </a></div>
+</div> 
+
+
+
+
+
+</body>
+</html>
